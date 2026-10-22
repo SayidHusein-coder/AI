@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yayasan Cahaya Pelajar Papua - Portal Donasi Pendidikan</title>
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary: #007749;       /* Hijau Kebaikan / Islami / Komunitas */
+      --primary-dark: #005433;
+      --accent: #F7941E;        /* Oranye Semangat */
+      --bg-light: #F8F9FA;
+      --text-dark: #2B2B2B;
+      --text-muted: #666666;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* TOP BAR INFO */
+    .top-bar {
+      background-color: var(--primary-dark);
+      color: #fff;
+      padding: 8px 5%;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar-info span {
+      margin-right: 15px;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text h1 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .logo-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn-donasi-header {
+      background-color: var(--accent);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi-header:hover {
+      background-color: #e08312;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200') center/cover;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero tag {
+      background: rgba(247, 148, 30, 0.9);
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin: 20px 0 15px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary);
+      padding: 14px 32px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* STATISTIK COUNTER */
+    .stats-section {
+      background: white;
+      margin: -40px auto 40px;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* PROGRAM CARDS */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-badge {
+      background: #e8f5e9;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .progress-bar-bg {
+      background-color: #e0e0e0;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      background-color: var(--primary);
+      height: 100%;
+    }
+
+    .card-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* FORM DONASI SECTION */
+    .donation-wrapper {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .donation-info {
+      background: var(--primary);
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .donation-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .donation-info ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .donation-info li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .donation-form-container {
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    .quick-amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .amount-btn {
+      background: var(--bg-light);
+      border: 1px solid #ddd;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .amount-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* BANK ACCOUNTS */
+    .bank-box {
+      background: #f0f7f4;
+      border: 1px dashed var(--primary);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .bank-account {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1a237e;
+      color: white;
+      padding: 60px 5% 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .footer-col p, .footer-col a {
+      color: #d1d5db;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { display: none; }
+      header { flex-direction: column; gap: 15px; }
+      .donation-wrapper { grid-template-columns: 1fr; }
+      .hero h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-info">
+      <span>📍 Kantor Pusat: Jayapura & Jakarta</span>
+      <span>✉️ donasi@pelajarpapua.or.id</span>
+      <span>📞 +62 812-3456-7890</span>
+    </div>
+    <div>
+      <span>Transparan • Amanah • Penyaluran Langsung</span>
+    </div>
+  </div>
+
+  <!-- Header & Nav -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">P</div>
+      <div class="logo-text">
+        <h1>CAHAYA PELAJAR PAPUA</h1>
+        <p>Yayasan Pemberdayaan Pendidikan Papua</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Profil</a>
+      <a href="#program">Program Beasiswa</a>
+      <a href="#donasi" class="btn-donasi-header">Donasi Sekarang</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="beranda">
+    <div class="hero-content">
+      <span class="tag">Gerakan Orang Tua Asuh</span>
+      <h2>Bantu Anak-Anak di Pedalaman Papua Raih Cita-Cita & Sekolah Layak</h2>
+      <p>Ribuan anak di wilayah terpencil Papua membutuhkan seragam, buku, fasilitas belajar, dan beasiswa untuk melanjutkan pendidikan mereka.</p>
+      <div class="hero-buttons">
+        <a href="#donasi" class="btn-primary">Kirim Donasi Pendidikan</a>
+        <a href="#program" class="btn-secondary">Lihat Program Binaan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistik Transparansi -->
+  <div class="stats-section">
+    <div class="stat-item">
+      <h3>1.450+</h3>
+      <p>Pelajar Terbantu</p>
+    </div>
+    <div class="stat-item">
+      <h3>28</h3>
+      <p>Sekolah & Rumah Belajar</p>
+    </div>
+    <div class="stat-item">
+      <h3>Rp 1,2 M</h3>
+      <p>Dana Disalurkan</p>
+    </div>
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>Laporan Transparan</p>
+    </div>
+  </div>
+
+  <!-- Program Utama -->
+  <div class="container" id="program">
+    <div class="section-header">
+      <h2>Program Bantuan Pendidikan</h2>
+      <p>Pilih program kebaikan yang ingin Anda bantu untuk masa depan anak-anak Papua.</p>
+    </div>
+
+    <div class="program-grid">
+      
+      <!-- Card 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600" alt="Beasiswa Pelajar Papua">
+        <div class="card-content">
+          <span class="card-badge">BEASISWA UTAMA</span>
+          <h3>Beasiswa Orang Tua Asuh SD-SMA</h3>
+          <p>Membiayai SPP, seragam, dan operasional harian anak-anak berprestasi di Kabupaten Puncak Jaya dan Asmat.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-fill" style="width: 70%;"></div>
+          </div>
+          <div class="card-stats">
+            <span>Terkumpul: <b>Rp 140 Juta</b></span>
+            <span>Target: <b>Rp 200 Juta</b></span>
+          </div>
+          <a href="#donasi" class="btn-primary" style="text-align: center;">Donasi Sekarang</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600" alt="Buku dan Paket Belajar">
+        <div class="card-content">
+          <span class="card-badge">FASILITAS BELAJAR</span>
+          <h3>1.000 Paket Buku & Alat Tulis</h3>
+          <p>Pengadaan perpustakaan keliling dan distribusi alat tulis untuk sekolah-sekolah di pelosok Pegunungan Bintang.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-fill" style="width: 45%;"></div>
+          </div>
+          <div class="card-stats">
+            <span>Terkumpul: <b>Rp 45 Juta</b></span>
+            <span>Target: <b>Rp 100 Juta</b></span>
+          </div>
+          <a href="#donasi" class="btn-primary" style="text-align: center;">Donasi Sekarang</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600" alt="Renovasi Ruang Kelas">
+        <div class="card-content">
+          <span class="card-badge">INFRASTRUKTUR</span>
+          <h3>Renovasi Ruang Kelas Darurat</h3>
+          <p>Perbaikan atap, papan tulis, dan meja belajar yang rusak agar proses mengajar aman dari hujan.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-fill" style="width: 85%;"></div>
+          </div>
+          <div class="card-stats">
+            <span>Terkumpul: <b>Rp 170 Juta</b></span>
+            <span>Target: <b>Rp 200 Juta</b></span>
+          </div>
+          <a href="#donasi" class="btn-primary" style="text-align: center;">Donasi Sekarang</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Form Donasi & Rekening -->
+  <div class="container" id="donasi">
+    <div class="donation-wrapper">
+      
+      <!-- Info Sisi Kiri -->
+      <div class="donation-info">
+        <h3>Mari Bergabung Menjadi Bagian dari Kebaikan</h3>
+        <p>Setiap rupiah yang Anda salurkan akan dikonversi menjadi perlengkapan sekolah dan harapan masa depan bagi adik-adik di Papua.</p>
+        <ul>
+          <li>✔ Penyaluran dana tepat sasaran langsung ke lokasi</li>
+          <li>✔ Laporan penyaluran dana dikirim berkala via WhatsApp / Email</li>
+          <li>✔ Bebas pilih nominal donasi dan metode pembayaran</li>
+        </ul>
+
+        <div class="bank-box" style="margin-top: 30px; color: var(--text-dark);">
+          <h4 style="margin-bottom: 10px; color: var(--primary-dark);">Rekening Resmi Yayasan:</h4>
+          <div class="bank-account">
+            <span><b>Bank Mandiri:</b></span>
+            <span>142-00-1234567-8</span>
+          </div>
+          <div class="bank-account">
+            <span><b>Bank BSI:</b></span>
+            <span>711-2233-445</span>
+          </div>
+          <div class="bank-account">
+            <span><b>Atas Nama:</b></span>
+            <span>Yayasan Cahaya Pelajar Papua</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Sisi Kanan -->
+      <div class="donation-form-container">
+        <h3 style="margin-bottom: 20px; color: var(--primary);">Formulir Donasi Online</h3>
+        
+        <form>
+          <div class="form-group">
+            <label>Pilih Program Donasi</label>
+            <select required>
+              <option value="">-- Pilih Program Bantuan --</option>
+              <option value="beasiswa">Beasiswa Orang Tua Asuh SD-SMA</option>
+              <option value="buku">1.000 Paket Buku & Alat Tulis</option>
+              <option value="renovasi">Renovasi Ruang Kelas Darurat</option>
+              <option value="umum">Donasi Umum Pendidikan Papua</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nominal Donasi (Rp)</label>
+            <input type="number" id="nominal-input" placeholder="Contoh: 100000" required>
+            <div class="quick-amounts">
+              <button type="button" class="amount-btn" onclick="setAmount(50000)">Rp 50rb</button>
+              <button type="button" class="amount-btn" onclick="setAmount(100000)">Rp 100rb</button>
+              <button type="button" class="amount-btn" onclick="setAmount(250000)">Rp 250rb</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Nama Donatur</label>
+            <input type="text" placeholder="Nama Anda (Kosongkan jika Hamba Allah)">
+          </div>
+
+          <div class="form-group">
+            <label>Nomor WhatsApp (Untuk Laporan Penyaluran)</label>
+            <input type="tel" placeholder="08xxxxxxxxxx" required>
+          </div>
+
+          <div class="form-group">
+            <label>Metode Pembayaran</label>
+            <select required>
+              <option value="qris">QRIS (Gopay, ShopeePay, OVO, Dana)</option>
+              <option value="mandiri">Transfer Bank Mandiri</option>
+              <option value="bsi">Transfer Bank BSI</option>
+              <option value="bca">Transfer Bank BCA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Doa / Pesan Kebaikan (Opsional)</label>
+            <textarea rows="2" placeholder="Semoga adik-adik Papua makin semangat belajar..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width: 100%; border: none; padding: 15px; font-size: 1rem;">
+            Lanjutkan Donasi Sekarang
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Yayasan Cahaya Pelajar Papua</h4>
+        <p>Lembaga nirlaba independen yang berfokus pada pemerataan fasilitas pendidikan dan beasiswa bagi anak-anak di daerah pelosok Papua.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Program Utama</h4>
+        <a href="#program">Beasiswa Orang Tua Asuh</a>
+        <a href="#program">Perpustakaan Keliling Papua</a>
+        <a href="#program">Renovasi Sekolah Rusak</a>
+        <a href="#program">Pelatihan Guru Honor Pedalaman</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kantor Operasional</h4>
+        <p><b>Jayapura:</b> Jl. Raya Abepura No. 45, Kota Jayapura, Papua</p>
+        <p><b>Jakarta:</b> Gedung Filantropi Lt. 3, Jakarta Selatan</p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2026 Yayasan Cahaya Pelajar Papua. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script>
+    function setAmount(val) {
+      document.getElementById('nominal-input').value = val;
+    }
+  </script>
+
+</body>
+</html>
