@@ -1,0 +1,494 @@
+\body {
+    font-family: var(--font-family);
+    background: linear-gradient(
+        to bottom,
+        var(--primary-color),
+        var(--second-color),
+        var(--dark-color)
+    );
+    background-repeat: no-repeat;
+}
+
+.container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control {
+    width: 70vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    height: 500px;
+    min-width: 300px;
+    max-width: max-content;
+    background-color: var(--white);
+    border-radius: 25px 0px 0px 25px;
+    overflow: hidden;
+    padding: 30px 50px 0px 50px;
+}
+
+.side-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    min-width: 340px;
+    max-width: max-content;
+    background-color: var(--semi-gray);
+    border-radius: 0px 25px 25px 0px;
+    overflow: hidden;
+    padding: 30px 0px 0px 0px;
+}
+
+.side-component .exit-button {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+}
+
+.side-component .exit-button button {
+    border: none;
+    color: var(--white);
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.calendar-header {
+    background: var(--primary-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: var(--text-white);
+    padding: 10px;
+}
+
+.calendar-body {
+    padding: 10px;
+}
+
+.calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-gray);
+}
+
+.calendar-week-days div:hover {
+    color: var(--text-black);
+    transform: scale(1.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-week-days div {
+    display: grid;
+    place-items: center;
+    height: 50px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: var(--text-black);
+}
+
+.calendar-days div {
+    width: 37px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+}
+
+.month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.month-picker:hover {
+    background-color: var(--hover);
+}
+
+.month-picker:hover {
+    color: var(--white-hover);
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+}
+
+.year-change {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.year-change:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.year:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-days span {
+    height: 10px;
+}
+
+.calendar div span.lp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    background-color: transparent;
+}
+
+.calendar-days div span.lp span.hard {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: var(--red);
+    margin: 0 2px;
+}
+
+.calendar-days div span.lp span.warm {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: var(--yellow);
+    margin: 0 2px;
+}
+
+.calendar-days div span.lp span.cold {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: var(--green);
+    margin: 0 2px;
+}
+
+.calendar-days div:hover {
+    transition: all 0.2s ease-in-out;
+    height: 0.2s ease-in-out;
+    background-color: var(--fill-hover);
+    border-radius: 20%;
+    color: var(--text-white);
+    border: 1px solid var(--primary-color);
+}
+
+.calendar-days div.current-date {
+    border: 1px solid var(--second-color);
+    color: var(--text-primary);
+    background-color: var(--white);
+    border-radius: 20%;
+}
+
+.calendar-days div.active-date {
+    color: var(--text-white) !important;
+    background-color: var(--second-color);
+    border-radius: 20%;
+    border: 1px solid var(--second-color);
+}
+
+.month-list {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    border: 2px solid var(--dark-color);
+    margin-top: 20px;
+    border-radius: 10px;
+    max-width: max-content;
+    min-width: 400px;
+    max-height: 500px;
+}
+
+.month-list div {
+    display: grid;
+    place-content: center;
+    margin: 5px 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list > div > div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.month-list > div > div:hover {
+    background-color: var(--white);
+    color: var(--text-black);
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list .show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left .7s forwards;
+}
+
+.month-list .hidonce {
+    visibility: hidden;
+}
+
+.month-list .hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+}
+
+.date-time-formate {
+    min-width: 150px;
+    min-height: 100px;
+    max-width: max-content;
+    max-height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.day-text-formate {
+    font-size: 1.4rem;
+    padding-right: 5%;
+    border-right: 3px solid #9796f0;
+    left: -1rem;
+}
+
+.date-time-value {
+    min-height: 350px;
+    max-height: max-content;
+    width: max-content;
+    text-align: center;
+}
+
+.showing {
+    animation: zoomin 0.4s ease;
+}
+
+.hidding {
+    display: none;
+}
+
+.component-content {
+    max-width: 400px;
+    min-height: 350px;
+    margin-top: 30px;
+}
+
+.component-content .list-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 250px;
+    min-height: 40px;
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--white);
+}
+
+.component-content .list-card.hard {
+    border-left: 4px solid var(--red);
+}
+
+.component-content .list-card.warm {
+    border-left: 4px solid var(--yellow);
+}
+
+.component-content .list-card.cold {
+    border-left: 4px solid var(--green);
+}
+
+.component-content .vector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+}
+.component-content .vector img {
+    width: 280px;
+}
+
+.component-content button {
+    cursor: pointer;
+    min-width: 150px;
+    max-width: 200px;
+    text-align: center;
+    border: 2px solid var(--dark-color);
+    background-color: var(--dark-color);
+    color: var(--white);
+    border-radius: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    text-decoration: solid;
+}
+
+.time-formate {
+    font-size: 1.5rem;
+}
+
+.time-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.hidetime {
+    animation: hidetime 1.5s forwards;
+}
+
+.date-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.showtime {
+    animation: showtime 1s forwards;
+}
+
+.time-formate.showtime {
+    animation: showtime 1s forwards;
+}
+
+.date-formate.showtime {
+    animation: showtime 1s forwards;
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 1;
+    }
+}
+
+@keyframes to-bottom {
+    0% {
+        margin-top: -0px;
+        opacity: 0;
+    }
+
+    100% {
+        margin-top: -800px;
+        opacity: 1;
+    }
+}
+
+@keyframes to-top-2 {
+    0% {
+        margin-top: -800px;
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: -0px;
+        opacity: 0;
+    }
+}
+
+@keyframes to-left {
+    0% {
+        transform: translateX(230%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes to-right {
+    10% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-150%);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomin {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .control {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .side-component {
+        border-radius: 25px 25px 0px 0px;
+        min-width: 450px;
+        max-width: max-content;
+        z-index: 1;
+        opacity: 0;
+        animation: to-top-2 1s forwards;
+    }
+
+    .side-component .exit-button {
+        opacity: 1;
+    }
+
+    .side-component.active {
+        opacity: 1;
+        animation: to-bottom 1s forwards;
+    }
+
+    .calendar {
+        height: 500px;
+        border-radius: 25px;
+    }
+}
